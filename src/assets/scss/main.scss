@@ -62,13 +62,6 @@ $theme-colors: (
     font-weight: bold;
 }
 
-.timer__delete {
-    position: absolute;
-    top: -4px;
-    right: 2px;
-    font-size: 1.1em;
-}
-
 .column__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

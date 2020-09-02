@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import PlayButton from '../Icons/PlayButton'
 import { humanReadableTime } from '../../utils'
+import PlayIcon from '../Icons/PlayIcon'
+import CloseIcon from '../Icons/CloseIcon'
+
+import './Timer.scss'
 
 export default function Timer({ name: timerName = '', time = 0, state }) {
     const [name, setName] = useState(timerName || 'Timer #')
@@ -45,12 +48,15 @@ export default function Timer({ name: timerName = '', time = 0, state }) {
 
     return (
         <div className='card__list bg-white border-radius box-shadow border mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>
-            <div className='d-flex align-items-center mr-4'>
+            <a href='#' className='text-secondary timer__delete'>
+                <CloseIcon className='text-secondary' size={'1em'} />
+            </a>
+            <div className='d-flex align-items-center mr-4 mt-2'>
                 <div className='p-2 play-button' onClick={handlePlay}>
-                    <PlayButton className='text-secondary p-3' size='4em' />
+                    <PlayIcon className='text-secondary p-3' size='4em' />
                 </div>
             </div>
-            <div className='d-flex flex-column justify-content-center timer__form'>
+            <div className='d-flex flex-column justify-content-center timer__form mt-2'>
                 <input
                     type='text'
                     className='form-control mb-3 timer__title-input text-black'

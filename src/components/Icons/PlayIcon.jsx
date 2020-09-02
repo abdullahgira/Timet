@@ -1,12 +1,12 @@
 import React from 'react'
 
-function PlayButton({ className, size }) {
+function PlayIcon({ className, size }) {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'
             width={size}
             height={size}
-            className={`${className}`}
+            className={className}
             fill='currentColor'
             viewBox='0 0 16 16'
         >
@@ -15,4 +15,4 @@ function PlayButton({ className, size }) {
     )
 }
 
-export default PlayButton
+export default PlayIcon
