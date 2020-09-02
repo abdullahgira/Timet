@@ -1,13 +1,12 @@
 import React from 'react'
 import { humanReadableTime } from '../../utils'
+import Reset from '../Reset'
 
 export default function TimerPaused({ name, time, startedAt, pausedAt }) {
     const { hours, minutes, seconds } = humanReadableTime(time)
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>
-            <a href='#' className='text-primary timer__reset'>
-                RESET
-            </a>
+            <Reset />
             <div className='d-flex align-items-center mr-4'>
                 <div className='p-2 pause-button'>
                     <svg

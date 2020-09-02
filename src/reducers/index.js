@@ -41,6 +41,16 @@ const byId = (state = {}, action) => {
                     state: timerState.DONE,
                 },
             }
+
+        case actionTypes.RESET_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    startedAt: 0,
+                    state: timerState.WAITING,
+                },
+            }
         default:
             return state
     }

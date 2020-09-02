@@ -3,6 +3,7 @@ import useTimePlaying from './hooks/useTimePlaying'
 import PauseIcon from '../Icons/PauseIcon'
 import * as timerState from '../../constants/timer-states'
 import CheckIcon from '../Icons/CheckIcon'
+import Reset from '../Reset'
 
 export default function TimerPlaying({ id, name, time, startedAt, state }) {
     const { hours, minutes, seconds, onPause } = useTimePlaying({
@@ -13,11 +14,7 @@ export default function TimerPlaying({ id, name, time, startedAt, state }) {
     if ((state === timerState.DONE) === timerState.DONE) console.log('haaaa')
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>
-            {state === timerState.DONE && (
-                <a href='#' className='text-primary timer__reset'>
-                    RESET
-                </a>
-            )}
+            {state === timerState.DONE && <Reset id={id} />}
             <div className='d-flex align-items-center mr-4'>
                 {state === timerState.DONE ? (
                     <div className='p-2 border-button-success'>
