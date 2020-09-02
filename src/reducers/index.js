@@ -12,11 +12,35 @@ const byId = (state = {}, action) => {
                     name: `Timer`,
                     time: 0, // time in ms
                     startedAt: 0,
-                    pausedAt: 0,
                     state: timerState.WAITING,
                 },
             }
-
+        case actionTypes.PAUSE_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    state: timerState.PAUSED,
+                },
+            }
+        case actionTypes.START_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    startedAt: Date.now(),
+                    state: timerState.PLAYING,
+                },
+            }
+        case actionTypes.DONE_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    startedAt: 0,
+                    state: timerState.DONE,
+                },
+            }
         default:
             return state
     }

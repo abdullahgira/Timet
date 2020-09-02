@@ -1,10 +1,16 @@
 import React from 'react'
 import Timer from '../Timer'
+import { useSelector } from 'react-redux'
+import { getAllTimers } from '../../reducers'
 
 export default function TimerList() {
+    const state = useSelector((state) => state)
+    const timers = getAllTimers(state)
     return (
-        <main>
-            <Timer />
-        </main>
+        <>
+            {timers.map((t) => (
+                <Timer key={t.id} {...t} />
+            ))}
+        </>
     )
 }

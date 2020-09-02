@@ -30,15 +30,23 @@ $theme-colors: (
 }
 
 .play-button {
-    border: 3px solid $secondary;
+    border: 2px solid $secondary;
     border-radius: 200px;
     cursor: pointer;
 }
 
 .pause-button {
-    border: 3px solid #343a40;
+    border: 2px solid #343a40;
     border-radius: 200px;
     cursor: pointer;
+}
+
+@each $color, $value in $theme-colors {
+    .border-button-#{$color} {
+        border: 2px solid $value;
+        border-radius: 200px;
+        cursor: pointer;
+    }
 }
 
 .timer__form {
@@ -56,8 +64,8 @@ $theme-colors: (
 
 .timer__reset {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 4px;
+    right: 12px;
     font-size: 14px;
     font-weight: bold;
 }

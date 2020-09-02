@@ -24,3 +24,8 @@ export const resetTimer = (payload) => ({
     type: types.RESET_TIMER,
     payload,
 })
+
+export const doneTimer = (payload) => ({
+    type: types.DONE_TIMER,
+    payload,
+})
