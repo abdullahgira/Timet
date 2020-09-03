@@ -35,11 +35,7 @@ export default function TimerPlaying({
                     </div>
                 )}
             </div>
-            <div
-                className={`d-flex flex-column justify-content-center mr-3 ${
-                    state === timerState.PLAYING && 'text-info'
-                }`}
-            >
+            <div className={`d-flex flex-column justify-content-center mr-3`}>
                 <h6 className='text-dark'>{name}</h6>
                 <div className='d-flex'>
                     <h2 className='mr-1 font-weight-bold'>{hours}</h2>

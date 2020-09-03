@@ -3,7 +3,7 @@ import { humanReadableTime } from '../../../utils'
 import { useDispatch } from 'react-redux'
 import { startTimer } from '../../../actions'
 
-export default function useTimeWaiting({ id, time }) {
+export default function useTimeWaiting({ id, name, time }) {
     const [hours, setHours] = useState('')
     const [minutes, setMinutes] = useState('')
     const [seconds, setSeconds] = useState('')
@@ -35,7 +35,11 @@ export default function useTimeWaiting({ id, time }) {
     }
 
     function handlePlay() {
-        dispatch(startTimer({ id }))
+        let time =
+            Number(seconds) * 1000 +
+            Number(minutes) * 60 * 1000 +
+            Number(hours) * 60 * 60 * 1000
+        dispatch(startTimer({ id, name, time }))
     }
 
     useEffect(() => {

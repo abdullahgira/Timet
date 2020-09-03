@@ -30,6 +30,8 @@ const byId = (state = {}, action) => {
                 ...state,
                 [action.payload.id]: {
                     ...state[action.payload.id],
+                    name: action.payload.name,
+                    time: action.payload.time,
                     startedAt: Date.now(),
                     state: timerState.PLAYING,
                 },

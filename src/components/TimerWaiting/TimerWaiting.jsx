@@ -13,7 +13,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
         handleSetMinutes,
         handleSetSeconds,
         handlePlay,
-    } = useTimeWaiting({ id, time })
+    } = useTimeWaiting({ id, name, time })
 
     return (
         <div className='card__list bg-white border-radius box-shadow border mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>

@@ -10,7 +10,7 @@ export default function TimerPaused({ id, name, time, pausedAt }) {
     const dispatch = useDispatch()
 
     function handleResume() {
-        dispatch(startTimer({ id }))
+        dispatch(startTimer({ id, name, time }))
     }
 
     return (
