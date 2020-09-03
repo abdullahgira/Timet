@@ -53,6 +53,7 @@ const byId = (state = {}, action) => {
                 [action.payload.id]: {
                     ...state[action.payload.id],
                     startedAt: 0,
+                    pausedAt: 0,
                     state: timerState.WAITING,
                 },
             }
