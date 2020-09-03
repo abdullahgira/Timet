@@ -1,47 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { humanReadableTime } from '../../utils'
+import React, { useState } from 'react'
 import CloseIcon from '../Icons/CloseIcon'
 import PlayIcon from '../Icons/PlayIcon'
+import useTimeWaiting from './hooks/useTimeWaiting'
 
-export default function TimerWaiting({ name: timerName, time, handlePlay }) {
+export default function TimerWaiting({ id, name: timerName, time }) {
     const [name, setName] = useState(timerName || 'Timer #')
-    const [hours, setHours] = useState('')
-    const [minutes, setMinutes] = useState('')
-    const [seconds, setSeconds] = useState('')
+    const {
+        hours,
+        minutes,
+        seconds,
+        handleSetHours,
+        handleSetMinutes,
+        handleSetSeconds,
+        handlePlay,
+    } = useTimeWaiting({ id, time })
 
-    function handleSetHours(hours) {
-        let h = Number(hours)
-        if (!isNaN(h) && h < 25 && h >= 0) {
-            hours = h < 10 ? '0' + h : h
-            setHours(hours)
-        }
-    }
-
-    function handleSetMinutes(minutes) {
-        let m = Number(minutes)
-        if (!isNaN(m) && m < 60 && m >= 0) {
-            minutes = m < 10 ? '0' + m : m
-            setMinutes(minutes)
-        }
-    }
-
-    function handleSetSeconds(seconds) {
-        let s = Number(seconds)
-        if (!isNaN(s) && s < 60 && s >= 0) {
-            seconds = s < 10 ? '0' + s : s
-            setSeconds(seconds)
-        }
-    }
-
-    useEffect(() => {
-        const { hours, minutes, seconds } = humanReadableTime(time)
-        setHours(hours)
-        setMinutes(minutes)
-        setSeconds(seconds)
-    }, [time])
     return (
         <div className='card__list bg-white border-radius box-shadow border mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>
-            <a href='#' className='text-secondary timer__delete'>
+            <a href='##' className='text-secondary timer__delete'>
                 <CloseIcon className='text-secondary' size={'1em'} />
             </a>
             <div className='d-flex align-items-center mr-4 mt-2'>
@@ -52,7 +28,7 @@ export default function TimerWaiting({ name: timerName, time, handlePlay }) {
             <div className='d-flex flex-column justify-content-center timer__form mt-2'>
                 <input
                     type='text'
-                    className='form-control mb-3 timer__title-input text-black'
+                    className='form-control mb-2 timer__title-input text-black'
                     placeholder='Timer name'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
