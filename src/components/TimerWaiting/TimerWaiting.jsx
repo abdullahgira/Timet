@@ -13,11 +13,16 @@ export default function TimerWaiting({ id, name: timerName, time }) {
         handleSetMinutes,
         handleSetSeconds,
         handlePlay,
+        onDelete,
     } = useTimeWaiting({ id, name, time })
 
     return (
         <div className='card__list bg-white border-radius box-shadow border mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>
-            <a href='##' className='text-secondary timer__delete'>
+            <a
+                href='##'
+                className='text-secondary timer__delete'
+                onClick={onDelete}
+            >
                 <CloseIcon className='text-secondary' size={'1em'} />
             </a>
             <div className='d-flex align-items-center mr-4'>

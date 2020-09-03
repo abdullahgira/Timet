@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { humanReadableTime } from '../../../utils'
 import { useDispatch } from 'react-redux'
-import { startTimer } from '../../../actions'
+import { startTimer, deleteTimer } from '../../../actions'
 
 export default function useTimeWaiting({ id, name, time }) {
     const [hours, setHours] = useState('')
@@ -42,6 +42,10 @@ export default function useTimeWaiting({ id, name, time }) {
         dispatch(startTimer({ id, name, time }))
     }
 
+    function onDelete() {
+        dispatch(deleteTimer({ id }))
+    }
+
     useEffect(() => {
         const { hours, minutes, seconds } = humanReadableTime(time)
         setHours(hours)
@@ -57,5 +61,6 @@ export default function useTimeWaiting({ id, name, time }) {
         handleSetMinutes,
         handleSetSeconds,
         handlePlay,
+        onDelete,
     }
 }

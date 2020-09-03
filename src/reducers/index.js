@@ -57,6 +57,11 @@ const byId = (state = {}, action) => {
                     state: timerState.WAITING,
                 },
             }
+        case actionTypes.DELETE_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: undefined,
+            }
         default:
             return state
     }
@@ -66,6 +71,8 @@ const allIds = (state = [], action) => {
     switch (action.type) {
         case actionTypes.ADD_TIMER:
             return [...state, action.payload.id]
+        case actionTypes.DELETE_TIMER:
+            return state.filter((id) => id !== action.payload.id)
         default:
             return state
     }

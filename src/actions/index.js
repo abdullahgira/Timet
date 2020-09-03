@@ -29,3 +29,8 @@ export const doneTimer = (payload) => ({
     type: types.DONE_TIMER,
     payload,
 })
+
+export const deleteTimer = (payload) => ({
+    type: types.DELETE_TIMER,
+    payload,
+})
