@@ -5,13 +5,19 @@ import * as timerState from '../../constants/timer-states'
 import CheckIcon from '../Icons/CheckIcon'
 import Reset from '../Reset'
 
-export default function TimerPlaying({ id, name, time, startedAt, state }) {
+export default function TimerPlaying({
+    id,
+    name,
+    time,
+    startedAt,
+    pausedAt,
+    state,
+}) {
     const { hours, minutes, seconds, onPause } = useTimePlaying({
         id,
-        time,
+        time: pausedAt || time,
         startedAt,
     })
-    if ((state === timerState.DONE) === timerState.DONE) console.log('haaaa')
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>
             {state === timerState.DONE && <Reset id={id} />}

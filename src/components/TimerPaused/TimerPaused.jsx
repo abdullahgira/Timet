@@ -1,24 +1,24 @@
 import React from 'react'
 import { humanReadableTime } from '../../utils'
 import Reset from '../Reset'
+import { useDispatch } from 'react-redux'
+import { startTimer } from '../../actions'
+import PlayIcon from '../Icons/PlayIcon'
 
-export default function TimerPaused({ name, time, startedAt, pausedAt }) {
-    const { hours, minutes, seconds } = humanReadableTime(time)
+export default function TimerPaused({ id, name, time, pausedAt }) {
+    const { hours, minutes, seconds } = humanReadableTime(pausedAt || time)
+    const dispatch = useDispatch()
+
+    function handleResume() {
+        dispatch(startTimer({ id }))
+    }
+
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>
             <Reset />
             <div className='d-flex align-items-center mr-4'>
-                <div className='p-2 pause-button'>
-                    <svg
-                        width='4em'
-                        height='4em'
-                        viewBox='0 0 16 16'
-                        className='text-dark p-3'
-                        fill='currentColor'
-                        xmlns='http://www.w3.org/2000/svg'
-                    >
-                        <path d='M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z' />
-                    </svg>
+                <div className='p-2 border-button-dark' onClick={handleResume}>
+                    <PlayIcon size={'4em'} className='text-dark p-3' />
                 </div>
             </div>
             <div className='d-flex flex-column justify-content-center text-dark mr-3'>
