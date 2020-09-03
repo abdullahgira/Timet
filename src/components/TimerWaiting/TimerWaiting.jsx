@@ -20,12 +20,12 @@ export default function TimerWaiting({ id, name: timerName, time }) {
             <a href='##' className='text-secondary timer__delete'>
                 <CloseIcon className='text-secondary' size={'1em'} />
             </a>
-            <div className='d-flex align-items-center mr-4 mt-2'>
+            <div className='d-flex align-items-center mr-4'>
                 <div className='p-2 play-button' onClick={handlePlay}>
                     <PlayIcon className='text-secondary p-3' size='4em' />
                 </div>
             </div>
-            <div className='d-flex flex-column justify-content-center timer__form mt-2'>
+            <div className='d-flex flex-column justify-content-center timer__form'>
                 <input
                     type='text'
                     className='form-control mb-2 timer__title-input text-black'

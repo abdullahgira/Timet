@@ -15,7 +15,7 @@ export default function TimerPaused({ id, name, time, pausedAt }) {
 
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>
-            <Reset />
+            <Reset id={id} />
             <div className='d-flex align-items-center mr-4'>
                 <div className='p-2 border-button-dark' onClick={handleResume}>
                     <PlayIcon size={'4em'} className='text-dark p-3' />

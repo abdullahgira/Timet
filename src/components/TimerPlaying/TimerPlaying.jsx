@@ -27,13 +27,20 @@ export default function TimerPlaying({
                         <CheckIcon className='text-success p-3' size={'4em'} />
                     </div>
                 ) : (
-                    <div className='p-2 border-button-dark' onClick={onPause}>
+                    <div
+                        className='p-2 border-button-info text-info'
+                        onClick={onPause}
+                    >
                         <PauseIcon className='p-3' size={'4em'} />
                     </div>
                 )}
             </div>
-            <div className='d-flex flex-column justify-content-center text-dark mr-3'>
-                <h6>{name}</h6>
+            <div
+                className={`d-flex flex-column justify-content-center mr-3 ${
+                    state === timerState.PLAYING && 'text-info'
+                }`}
+            >
+                <h6 className='text-dark'>{name}</h6>
                 <div className='d-flex'>
                     <h2 className='mr-1 font-weight-bold'>{hours}</h2>
                     <span className='h2 font-weight-bold mr-1 timer__playing-time-spliter'>
