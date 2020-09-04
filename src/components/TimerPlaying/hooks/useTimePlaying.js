@@ -38,7 +38,7 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
         }, 1000)
         intervalRef.current = intervalId
         return () => clearInterval(intervalRef.current)
-    }, [])
+    })
 
     useEffect(() => {
         const { hours, minutes, seconds } = humanReadableTime(timer)
