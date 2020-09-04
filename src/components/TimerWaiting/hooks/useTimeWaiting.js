@@ -60,6 +60,12 @@ export default function useTimeWaiting({ id, name, time }) {
         dispatch(deleteTimer({ id }))
     }
 
+    function handleKeyDown(e) {
+        if (e.which === 13) {
+            handlePlay()
+        }
+    }
+
     useEffect(() => {
         const { hours, minutes, seconds } = humanReadableTime(time)
         setHours(hours)
@@ -75,5 +81,6 @@ export default function useTimeWaiting({ id, name, time }) {
         onDelete,
         onInputBlur,
         handleTimeInput,
+        handleKeyDown,
     }
 }

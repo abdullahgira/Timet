@@ -15,6 +15,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
         onDelete,
         onInputBlur,
         handleTimeInput,
+        handleKeyDown,
     } = useTimeWaiting({ id, name, time })
 
     return (
@@ -38,6 +39,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     placeholder='Timer name'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    onKeyUp={handleKeyDown}
                 />
                 <div className='d-flex'>
                     <input
@@ -53,6 +55,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             })
                         }
                         onBlur={() => onInputBlur({ type: 'HOURS' })}
+                        onKeyUp={handleKeyDown}
                     />
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
@@ -70,6 +73,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             })
                         }
                         onBlur={() => onInputBlur({ type: 'MINUTES' })}
+                        onKeyUp={handleKeyDown}
                     />
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
@@ -87,6 +91,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             })
                         }
                         onBlur={() => onInputBlur({ type: 'SECONDS' })}
+                        onKeyUp={handleKeyDown}
                     />
                 </div>
             </div>
