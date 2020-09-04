@@ -29,7 +29,7 @@ function getUserPermission() {
         }
     }).then(async (permissionResult) => {
         if (permissionResult !== 'granted') {
-            throw new Error('Permission denied.')
+            console.warn('Permission denied.')
         }
         return 'granted'
     })

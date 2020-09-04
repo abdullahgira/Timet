@@ -42,57 +42,63 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     onKeyUp={handleKeyDown}
                 />
                 <div className='d-flex'>
-                    <input
-                        type='text'
-                        className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
-                        placeholder='hh'
-                        value={hours}
-                        onClick={(e) => e.target.select()}
-                        onChange={(e) =>
-                            handleTimeInput({
-                                type: 'HOURS',
-                                value: e.target.value,
-                            })
-                        }
-                        onBlur={() => onInputBlur({ type: 'HOURS' })}
-                        onKeyUp={handleKeyDown}
-                    />
+                    <span>
+                        <input
+                            type='text'
+                            className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
+                            placeholder='hh'
+                            value={hours}
+                            onClick={(e) => e.target.select()}
+                            onChange={(e) =>
+                                handleTimeInput({
+                                    type: 'HOURS',
+                                    value: e.target.value,
+                                })
+                            }
+                            onBlur={() => onInputBlur({ type: 'HOURS' })}
+                            onKeyUp={handleKeyDown}
+                        />
+                    </span>
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
                     </span>
-                    <input
-                        type='text'
-                        className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
-                        placeholder='mm'
-                        value={minutes}
-                        onClick={(e) => e.target.select()}
-                        onChange={(e) =>
-                            handleTimeInput({
-                                type: 'MINUTES',
-                                value: e.target.value,
-                            })
-                        }
-                        onBlur={() => onInputBlur({ type: 'MINUTES' })}
-                        onKeyUp={handleKeyDown}
-                    />
+                    <span>
+                        <input
+                            type='text'
+                            className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
+                            placeholder='mm'
+                            value={minutes}
+                            onClick={(e) => e.target.select()}
+                            onChange={(e) =>
+                                handleTimeInput({
+                                    type: 'MINUTES',
+                                    value: e.target.value,
+                                })
+                            }
+                            onBlur={() => onInputBlur({ type: 'MINUTES' })}
+                            onKeyUp={handleKeyDown}
+                        />
+                    </span>
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
                     </span>
-                    <input
-                        type='text'
-                        className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
-                        placeholder='ss'
-                        value={seconds}
-                        onClick={(e) => e.target.select()}
-                        onChange={(e) =>
-                            handleTimeInput({
-                                type: 'SECONDS',
-                                value: e.target.value,
-                            })
-                        }
-                        onBlur={() => onInputBlur({ type: 'SECONDS' })}
-                        onKeyUp={handleKeyDown}
-                    />
+                    <span>
+                        <input
+                            type='text'
+                            className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
+                            placeholder='ss'
+                            value={seconds}
+                            onClick={(e) => e.target.select()}
+                            onChange={(e) =>
+                                handleTimeInput({
+                                    type: 'SECONDS',
+                                    value: e.target.value,
+                                })
+                            }
+                            onBlur={() => onInputBlur({ type: 'SECONDS' })}
+                            onKeyUp={handleKeyDown}
+                        />
+                    </span>
                 </div>
             </div>
         </div>
