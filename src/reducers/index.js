@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import alarmReducer from '../components/Alarm/alarm-reducer'
 import * as actionTypes from '../constants/action-types'
 import * as timerState from '../constants/timer-states'
 
@@ -46,7 +47,6 @@ const byId = (state = {}, action) => {
                     state: timerState.DONE,
                 },
             }
-
         case actionTypes.RESET_TIMER:
             return {
                 ...state,
@@ -85,4 +85,7 @@ const timers = combineReducers({
 
 export const getAllTimers = (state) => state.allIds.map((id) => state.byId[id])
 
-export default timers
+export default combineReducers({
+    timers,
+    alarm: alarmReducer,
+})

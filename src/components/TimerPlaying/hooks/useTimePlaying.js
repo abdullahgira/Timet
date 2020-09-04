@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { humanReadableTime } from '../../../utils'
 import { useDispatch } from 'react-redux'
-import { doneTimer, pauseTimer } from '../../../actions'
+import { doneTimer, pauseTimer, playAudio } from '../../../actions'
 
 export default function useTimePlaying({ id, time, startedAt }) {
     const intervalRef = useRef()
@@ -21,6 +21,7 @@ export default function useTimePlaying({ id, time, startedAt }) {
             if (currTime < 0) {
                 setTimer(0)
                 dispatch(doneTimer({ id }))
+                dispatch(playAudio())
                 clearInterval(intervalRef.current)
             } else {
                 setTimer(currTime)

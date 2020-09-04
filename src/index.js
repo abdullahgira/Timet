@@ -53,8 +53,7 @@ const store = createStore(
 
 store.subscribe(() => {
     saveState({
-        byId: store.getState().byId,
-        allIds: store.getState().allIds,
+        timers: store.getState().timers,
     })
 })
 

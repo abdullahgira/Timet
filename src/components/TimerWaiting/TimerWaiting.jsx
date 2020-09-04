@@ -3,6 +3,8 @@ import CloseIcon from '../Icons/CloseIcon'
 import PlayIcon from '../Icons/PlayIcon'
 import useTimeWaiting from './hooks/useTimeWaiting'
 
+import './timer-waiting.scss'
+
 export default function TimerWaiting({ id, name: timerName, time }) {
     const [name, setName] = useState(timerName)
     const {

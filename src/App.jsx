@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import TimerList from './components/TimerList'
 import AddTimer from './components/AddTimer'
+import Alarm from './components/Alarm'
 
 function App() {
     useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
         <div className='column__list p-2'>
             <TimerList />
             <AddTimer />
+            <Alarm />
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import * as timerStates from '../../constants/timer-states'
-import './Timer.scss'
 import TimerWaiting from '../TimerWaiting'
 import TimerPlaying from '../TimerPlaying'
 import TimerPaused from '../TimerPaused'

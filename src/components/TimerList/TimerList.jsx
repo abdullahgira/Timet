@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { getAllTimers } from '../../reducers'
 
 export default function TimerList() {
-    const state = useSelector((state) => state)
+    const state = useSelector((state) => state.timers)
     const timers = getAllTimers(state)
     return (
         <>

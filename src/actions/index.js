@@ -34,3 +34,11 @@ export const deleteTimer = (payload) => ({
     type: types.DELETE_TIMER,
     payload,
 })
+
+export const playAudio = () => ({
+    type: types.PLAY_AUDIO,
+})
+
+export const pauseAudio = () => ({
+    type: types.PAUSE_AUDIO,
+})

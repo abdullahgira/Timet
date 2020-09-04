@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { addTimer } from '../../actions'
 import { v4 } from 'uuid'
 
+import './add-timer.scss'
+
 export default function AddTimer() {
     const dispatch = useDispatch()
     return (
