@@ -38,6 +38,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     className='form-control mb-2 timer__title-input text-black'
                     placeholder='Timer name'
                     value={name}
+                    onClick={(e) => e.target.select()}
                     onChange={(e) => setName(e.target.value)}
                     onKeyUp={handleKeyDown}
                 />
