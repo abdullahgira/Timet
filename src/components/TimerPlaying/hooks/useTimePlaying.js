@@ -19,11 +19,11 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
 
     function onDone() {
         setTimer(0)
-        dispatch(doneTimer({ id }))
-        dispatch(playAudio())
         notification.sendNotification({
             body: `Timer ${name} is done!`,
         })
+        dispatch(doneTimer({ id }))
+        dispatch(playAudio())
         clearInterval(intervalRef.current)
     }
 

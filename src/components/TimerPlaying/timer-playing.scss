@@ -1,0 +1,30 @@
+.done {
+    animation: anim infinite 1.8s linear;
+}
+
+@keyframes anim {
+    0% {
+        left: 0px;
+    }
+    10% {
+        left: 8px;
+    }
+    20% {
+        left: -8px;
+    }
+    30% {
+        left: 8px;
+    }
+    40% {
+        left: -8px;
+    }
+    50% {
+        left: 8px;
+    }
+    60% {
+        left: 0px;
+    }
+    100% {
+        left: 0px;
+    }
+}
