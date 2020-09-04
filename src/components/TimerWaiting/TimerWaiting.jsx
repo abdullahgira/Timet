@@ -4,16 +4,15 @@ import PlayIcon from '../Icons/PlayIcon'
 import useTimeWaiting from './hooks/useTimeWaiting'
 
 export default function TimerWaiting({ id, name: timerName, time }) {
-    const [name, setName] = useState(timerName || 'Timer #')
+    const [name, setName] = useState(timerName)
     const {
         hours,
         minutes,
         seconds,
-        handleSetHours,
-        handleSetMinutes,
-        handleSetSeconds,
         handlePlay,
         onDelete,
+        onInputBlur,
+        handleTimeInput,
     } = useTimeWaiting({ id, name, time })
 
     return (
@@ -44,7 +43,13 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                         className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                         placeholder='hh'
                         value={hours}
-                        onChange={(e) => handleSetHours(e.target.value)}
+                        onChange={(e) =>
+                            handleTimeInput({
+                                type: 'HOURS',
+                                value: e.target.value,
+                            })
+                        }
+                        onBlur={() => onInputBlur({ type: 'HOURS' })}
                     />
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
@@ -54,7 +59,13 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                         className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                         placeholder='mm'
                         value={minutes}
-                        onChange={(e) => handleSetMinutes(e.target.value)}
+                        onChange={(e) =>
+                            handleTimeInput({
+                                type: 'MINUTES',
+                                value: e.target.value,
+                            })
+                        }
+                        onBlur={() => onInputBlur({ type: 'MINUTES' })}
                     />
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
                         :
@@ -64,7 +75,13 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                         className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
                         placeholder='ss'
                         value={seconds}
-                        onChange={(e) => handleSetSeconds(e.target.value)}
+                        onChange={(e) =>
+                            handleTimeInput({
+                                type: 'SECONDS',
+                                value: e.target.value,
+                            })
+                        }
+                        onBlur={() => onInputBlur({ type: 'SECONDS' })}
                     />
                 </div>
             </div>

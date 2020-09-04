@@ -10,27 +10,41 @@ export default function useTimeWaiting({ id, name, time }) {
 
     const dispatch = useDispatch()
 
-    function handleSetHours(hours) {
-        let h = Number(hours)
-        if (!isNaN(h) && h < 25 && h >= 0) {
-            hours = h < 10 ? '0' + h : h
-            setHours(hours)
+    function onInputBlur({ type }) {
+        switch (type) {
+            case 'HOURS':
+                let h = Number(hours)
+                setHours(h < 10 ? '0' + h : h)
+                break
+            case 'MINUTES':
+                let m = Number(minutes)
+                setMinutes(m < 10 ? '0' + m : m)
+                break
+            case 'SECONDS':
+                let s = Number(seconds)
+                setSeconds(s < 10 ? '0' + s : s)
+                break
+            default:
+                return null
         }
     }
 
-    function handleSetMinutes(minutes) {
-        let m = Number(minutes)
-        if (!isNaN(m) && m < 60 && m >= 0) {
-            minutes = m < 10 ? '0' + m : m
-            setMinutes(minutes)
-        }
-    }
-
-    function handleSetSeconds(seconds) {
-        let s = Number(seconds)
-        if (!isNaN(s) && s < 60 && s >= 0) {
-            seconds = s < 10 ? '0' + s : s
-            setSeconds(seconds)
+    function handleTimeInput({ type, value }) {
+        switch (type) {
+            case 'HOURS':
+                let h = Number(value)
+                if (!isNaN(h) && h < 25 && h >= 0) setHours(value)
+                break
+            case 'MINUTES':
+                let m = Number(value)
+                if (!isNaN(m) && m < 60 && m >= 0) setMinutes(value)
+                break
+            case 'SECONDS':
+                let s = Number(value)
+                if (!isNaN(s) && s < 60 && s >= 0) setSeconds(value)
+                break
+            default:
+                return null
         }
     }
 
@@ -57,10 +71,9 @@ export default function useTimeWaiting({ id, name, time }) {
         hours,
         minutes,
         seconds,
-        handleSetHours,
-        handleSetMinutes,
-        handleSetSeconds,
         handlePlay,
         onDelete,
+        onInputBlur,
+        handleTimeInput,
     }
 }
