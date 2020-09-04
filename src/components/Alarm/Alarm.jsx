@@ -21,6 +21,7 @@ export default function Alarm() {
                 break
             case audioStates.PAUSED:
                 audioRef.current.pause()
+                audioRef.current.currentTime = 0
                 break
             default:
                 break

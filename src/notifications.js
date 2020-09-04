@@ -55,6 +55,11 @@ export function getPermission() {
 }
 
 export function sendNotification({ title = 'Timet', body }) {
-    const opts = { body, requireInteraction: true, sound: false }
+    const opts = {
+        body,
+        requireInteraction: true,
+        sound: false,
+        icon: '/notification_icon.png',
+    }
     serviceWorker.showNotification(title, opts)
 }

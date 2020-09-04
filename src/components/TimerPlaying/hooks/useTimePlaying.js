@@ -20,24 +20,24 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
     function onDone() {
         setTimer(0)
         notification.sendNotification({
-            body: `Timer ${name} is done!`,
+            title: `${name} is done!`,
         })
         dispatch(doneTimer({ id }))
         dispatch(playAudio())
         clearInterval(intervalRef.current)
     }
-
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            const currTime = startedAt + time - Date.now()
+        const intervalId = setTimeout(() => {
+            const currTime = startedAt + time - Date.now() + 1000
             if (currTime < 0) {
+                clearInterval(intervalRef.current)
                 onDone()
             } else {
                 setTimer(currTime)
             }
         }, 1000)
         intervalRef.current = intervalId
-        return () => clearInterval(intervalRef.current)
+        return () => clearTimeout(intervalRef.current)
     })
 
     useEffect(() => {
