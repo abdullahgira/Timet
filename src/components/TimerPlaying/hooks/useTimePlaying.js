@@ -3,7 +3,9 @@ import { humanReadableTime } from '../../../utils'
 import { useDispatch } from 'react-redux'
 import { doneTimer, pauseTimer, playAudio } from '../../../actions'
 
-export default function useTimePlaying({ id, time, startedAt }) {
+import * as notification from '../../../notifications'
+
+export default function useTimePlaying({ id, time, startedAt, name }) {
     const intervalRef = useRef()
     const dispatch = useDispatch()
 
@@ -15,14 +17,21 @@ export default function useTimePlaying({ id, time, startedAt }) {
     const [minutes, setMinutes] = useState(dm)
     const [seconds, setSeconds] = useState(ds)
 
+    function onDone() {
+        setTimer(0)
+        dispatch(doneTimer({ id }))
+        dispatch(playAudio())
+        notification.sendNotification({
+            body: `Timer ${name} is done!`,
+        })
+        clearInterval(intervalRef.current)
+    }
+
     useEffect(() => {
         const intervalId = setInterval(() => {
             const currTime = startedAt + time - Date.now()
             if (currTime < 0) {
-                setTimer(0)
-                dispatch(doneTimer({ id }))
-                dispatch(playAudio())
-                clearInterval(intervalRef.current)
+                onDone()
             } else {
                 setTimer(currTime)
             }

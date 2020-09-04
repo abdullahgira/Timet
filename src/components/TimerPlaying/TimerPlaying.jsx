@@ -17,6 +17,7 @@ export default function TimerPlaying({
         id,
         time: pausedAt || time,
         startedAt,
+        name,
     })
     return (
         <div className='card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative'>

@@ -31,7 +31,6 @@ export default function Alarm() {
         if (alarm.state === audioStates.PLAYING) {
             const intervalId = setInterval(() => {
                 const currTime = alarm.startedAt + ALARM_TIME - Date.now()
-                console.log('In the interval, currTime = ', currTime)
                 if (currTime < 0) {
                     clearInterval(intervalRef.current)
                     dispatch(pauseAudio())

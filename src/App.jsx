@@ -3,10 +3,19 @@ import TimerList from './components/TimerList'
 import AddTimer from './components/AddTimer'
 import Alarm from './components/Alarm'
 
+import * as notification from './notifications'
+
 function App() {
     useEffect(() => {
         let body = document.getElementsByTagName('body')[0]
         body.classList.add('bg-light')
+
+        async function notificationPermission() {
+            await notification.requestPermission()
+        }
+
+        notificationPermission()
+
         return () => {
             body.classList.remove('bg-light')
         }
