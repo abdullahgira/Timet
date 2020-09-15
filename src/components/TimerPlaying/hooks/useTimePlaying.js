@@ -16,6 +16,7 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
     const [hours, setHours] = useState(dh)
     const [minutes, setMinutes] = useState(dm)
     const [seconds, setSeconds] = useState(ds)
+    const [done, setDone] = useState(false)
 
     function onDone() {
         setTimer(0)
@@ -24,20 +25,23 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
         })
         dispatch(doneTimer({ id }))
         dispatch(playAudio())
-        clearInterval(intervalRef.current)
+        setDone(true)
     }
+
     useEffect(() => {
-        const intervalId = setTimeout(() => {
-            const currTime = startedAt + time - Date.now() + 1000
-            if (currTime < 0) {
-                clearInterval(intervalRef.current)
-                onDone()
-            } else {
-                setTimer(currTime)
-            }
-        }, 1000)
-        intervalRef.current = intervalId
-        return () => clearTimeout(intervalRef.current)
+        if (!done) {
+            const intervalId = setTimeout(() => {
+                const currTime = startedAt + time - Date.now() + 1000
+                if (currTime < 0) {
+                    clearInterval(intervalRef.current)
+                    onDone()
+                } else {
+                    setTimer(currTime)
+                }
+            }, 1000)
+            intervalRef.current = intervalId
+            return () => clearTimeout(intervalRef.current)
+        }
     })
 
     useEffect(() => {
