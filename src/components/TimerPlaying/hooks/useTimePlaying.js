@@ -23,7 +23,7 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
         notification.sendNotification({
             title: `${name} is done!`,
         })
-        dispatch(doneTimer({ id }))
+        dispatch(doneTimer({ id, doneAt: Date.now() }))
         dispatch(playAudio())
         setDone(true)
     }

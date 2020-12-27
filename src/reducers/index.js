@@ -14,6 +14,7 @@ const byId = (state = {}, action) => {
                     time: 0, // time in ms
                     startedAt: 0,
                     pausedAt: 0,
+                    doneAt: 0,
                     state: timerState.WAITING,
                 },
             }
@@ -53,6 +54,7 @@ const byId = (state = {}, action) => {
                     ...state[action.payload.id],
                     startedAt: 0,
                     pausedAt: 0,
+                    doneAt: action.payload.doneAt,
                     state: timerState.DONE,
                 },
             }

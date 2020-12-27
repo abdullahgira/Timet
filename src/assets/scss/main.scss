@@ -63,6 +63,13 @@ $theme-colors: (
     font-weight: bold;
 }
 
+.timer__done-at {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    font-size: 14px;
+}
+
 .column__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

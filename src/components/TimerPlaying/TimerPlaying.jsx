@@ -13,6 +13,7 @@ export default function TimerPlaying({
     time,
     startedAt,
     pausedAt,
+    doneAt,
     state,
 }) {
     const { hours, minutes, seconds, onPause } = useTimePlaying({
@@ -56,6 +57,13 @@ export default function TimerPlaying({
                     <h2 className='font-weight-bold'>{seconds}</h2>
                 </div>
             </div>
+            {state === timerState.DONE ? (
+                <div className='timer__done-at'>
+                    Done at: <span className="font-weight-bold">{Date(doneAt).slice(0, 24)}</span>
+                </div>
+            ) : (
+                null
+            )}
         </div>
     )
 }
