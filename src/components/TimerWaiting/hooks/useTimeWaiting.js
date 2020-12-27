@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { humanReadableTime } from '../../../utils'
 import { useDispatch } from 'react-redux'
-import { startTimer, deleteTimer } from '../../../actions'
+import { startTimer, deleteTimer, updateTimer } from '../../../actions'
 
 export default function useTimeWaiting({ id, name, time }) {
     const [hours, setHours] = useState('')
@@ -11,6 +11,7 @@ export default function useTimeWaiting({ id, name, time }) {
     const dispatch = useDispatch()
 
     function onInputBlur({ type }) {
+        let hasBeenSuccessfullyUpdated = true
         switch (type) {
             case 'HOURS':
                 let h = Number(hours)
@@ -25,8 +26,12 @@ export default function useTimeWaiting({ id, name, time }) {
                 setSeconds(s < 10 ? '0' + s : s)
                 break
             default:
+                hasBeenSuccessfullyUpdated = false
                 return null
         }
+
+        if (hasBeenSuccessfullyUpdated)
+            handleTimerUpdate()
     }
 
     function handleTimeInput({ type, value }) {
@@ -46,6 +51,14 @@ export default function useTimeWaiting({ id, name, time }) {
             default:
                 return null
         }
+    }
+
+    function handleTimerUpdate() {
+        let time =
+            Number(seconds) * 1000 +
+            Number(minutes) * 60 * 1000 +
+            Number(hours) * 60 * 60 * 1000
+        dispatch(updateTimer({ id, name, time }))
     }
 
     function handlePlay() {
@@ -82,5 +95,6 @@ export default function useTimeWaiting({ id, name, time }) {
         onInputBlur,
         handleTimeInput,
         handleKeyDown,
+        handleTimerUpdate
     }
 }

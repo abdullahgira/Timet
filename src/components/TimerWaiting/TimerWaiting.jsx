@@ -16,6 +16,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
         onInputBlur,
         handleTimeInput,
         handleKeyDown,
+        handleTimerUpdate
     } = useTimeWaiting({ id, name, time })
 
     return (
@@ -41,11 +42,12 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     onClick={(e) => e.target.select()}
                     onChange={(e) => setName(e.target.value)}
                     onKeyUp={handleKeyDown}
+                    onBlur={() => handleTimerUpdate()}
                 />
                 <div className='d-flex'>
                     <span>
                         <input
-                            type='text'
+                            type='number'
                             className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='hh'
                             value={hours}
@@ -58,6 +60,8 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             }
                             onBlur={() => onInputBlur({ type: 'HOURS' })}
                             onKeyUp={handleKeyDown}
+                            max={23}
+                            min={0}
                         />
                     </span>
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
@@ -65,7 +69,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     </span>
                     <span>
                         <input
-                            type='text'
+                            type='number'
                             className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='mm'
                             value={minutes}
@@ -78,6 +82,8 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             }
                             onBlur={() => onInputBlur({ type: 'MINUTES' })}
                             onKeyUp={handleKeyDown}
+                            max={59}
+                            min={0}
                         />
                     </span>
                     <span className='h4 mr-1 timer__play-time-spliter text-black'>
@@ -85,7 +91,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     </span>
                     <span>
                         <input
-                            type='text'
+                            type='number'
                             className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='ss'
                             value={seconds}
@@ -98,6 +104,8 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             }
                             onBlur={() => onInputBlur({ type: 'SECONDS' })}
                             onKeyUp={handleKeyDown}
+                            max={59}
+                            min={0}
                         />
                     </span>
                 </div>

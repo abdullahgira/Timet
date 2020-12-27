@@ -17,6 +17,15 @@ const byId = (state = {}, action) => {
                     state: timerState.WAITING,
                 },
             }
+        case actionTypes.UPDATE_TIMER:
+            return {
+                ...state,
+                [action.payload.id]: {
+                    ...state[action.payload.id],
+                    name: action.payload.name || state[action.payload.id].name || `Timer`,
+                    time: action.payload.time || state[action.payload.id].time || 0, // time in ms
+                },
+            }
         case actionTypes.PAUSE_TIMER:
             return {
                 ...state,

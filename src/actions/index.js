@@ -5,8 +5,8 @@ export const addTimer = (payload) => ({
     payload,
 })
 
-export const editTimer = (payload) => ({
-    type: types.EDIT_TIMER,
+export const updateTimer = (payload) => ({
+    type: types.UPDATE_TIMER,
     payload,
 })
 
