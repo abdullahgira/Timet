@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as audioStates from '../../constants/audio-states'
 
-import alarmSrc from '../../assets/sounds/alarm.mp3'
+import alarmSrc from '../../assets/sounds/alarm-2.mp3'
 import { pauseAudio } from '../../actions'
 
-const ALARM_TIME = 30 * 1000
+const ALARM_TIME = 2500
 
 export default function Alarm() {
     const audioRef = useRef()
