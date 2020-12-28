@@ -14,7 +14,7 @@ const byId = (state = {}, action) => {
                     time: 0, // time in ms
                     startedAt: 0,
                     pausedAt: 0,
-                    doneAt: 0,
+                    doneAt: "",
                     state: timerState.WAITING,
                 },
             }

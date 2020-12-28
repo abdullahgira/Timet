@@ -21,6 +21,7 @@ export default function TimerPlaying({
         time: pausedAt || time,
         startedAt,
         name,
+        doneAt
     })
     return (
         <div
@@ -59,7 +60,7 @@ export default function TimerPlaying({
             </div>
             {state === timerState.DONE ? (
                 <div className='timer__done-at'>
-                    Done at: <span className="font-weight-bold">{Date(doneAt).slice(0, 24)}</span>
+                    Done at: <span className="font-weight-bold">{doneAt}</span>
                 </div>
             ) : (
                 null

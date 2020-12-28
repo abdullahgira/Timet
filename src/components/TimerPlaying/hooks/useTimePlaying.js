@@ -5,7 +5,7 @@ import { doneTimer, pauseTimer, playAudio } from '../../../actions'
 
 import * as notification from '../../../notifications'
 
-export default function useTimePlaying({ id, time, startedAt, name }) {
+export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
     const intervalRef = useRef()
     const dispatch = useDispatch()
 
@@ -23,7 +23,7 @@ export default function useTimePlaying({ id, time, startedAt, name }) {
         notification.sendNotification({
             title: `${name} is done!`,
         })
-        dispatch(doneTimer({ id, doneAt: Date.now() }))
+        dispatch(doneTimer({ id, doneAt: startedAt === 0 ? doneAt : new Date().toString().slice(0, 24) }))
         dispatch(playAudio())
         setDone(true)
     }
