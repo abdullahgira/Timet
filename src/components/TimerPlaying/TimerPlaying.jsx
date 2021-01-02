@@ -12,9 +12,7 @@ export default function TimerPlaying({
     name,
     time,
     startedAt,
-    pausedAt,
     remainingTime,
-    doneAt,
     state,
 }) {
     const { hours, minutes, seconds, onPause } = useTimePlaying({
@@ -22,8 +20,11 @@ export default function TimerPlaying({
         time: remainingTime || time,
         startedAt,
         name,
-        doneAt
     })
+    const doneAt = (remainingTime ? 
+                        new Date(startedAt + remainingTime + 2000) : 
+                        new Date(startedAt + time + 2000)
+                    ).toString().slice(0, 24)
 
     return (
         <div
@@ -42,7 +43,7 @@ export default function TimerPlaying({
                         className='p-2 border-button-info text-info'
                         onClick={onPause}
                     >
-                        <PauseIcon className='p-3' size={'4em'} />
+                        <PauseIcon className='p-3' size={'4em'} role='button'/>
                     </div>
                 )}
             </div>
@@ -62,7 +63,7 @@ export default function TimerPlaying({
             </div>
             {state === timerState.DONE ? (
                 <div className='timer__done-at'>
-                    Done at: <span className="font-weight-bold">{(pausedAt ? new Date(pausedAt + time) : new Date(startedAt + time)).toString().slice(0, 24)}</span>
+                    Done at: <span className="font-weight-bold">{doneAt}</span>
                 </div>
             ) : (
                 null

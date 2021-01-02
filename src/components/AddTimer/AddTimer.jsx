@@ -9,7 +9,7 @@ export default function AddTimer() {
     const dispatch = useDispatch()
     return (
         <button
-            className='btn btn-info box-shadow p-5 text-center add-timer'
+            className='btn btn-info box-shadow p-5 text-center add-timer border-radius'
             onClick={() => dispatch(addTimer({ id: v4() }))}
         >
             <span>+</span>

@@ -5,7 +5,7 @@ import { doneTimer, pauseTimer, playAudio } from '../../../actions'
 
 import * as notification from '../../../notifications'
 
-export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
+export default function useTimePlaying({ id, time, startedAt, name }) {
     const intervalRef = useRef()
     const dispatch = useDispatch()
 
@@ -31,7 +31,7 @@ export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
     useEffect(() => {
         if (!done) {
             const intervalId = setTimeout(() => {
-                const currTime = startedAt + time - Date.now() + 1000
+                const currTime = startedAt + time - Date.now() + 1000 // + 1000 bec. the timer always starts with 1 sec off
                 if (currTime < 0) {
                     clearInterval(intervalRef.current)
                     onDone()
@@ -53,7 +53,7 @@ export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
 
     function onPause() {
         clearInterval(intervalRef.current)
-        dispatch(pauseTimer({ id, pausedAt: Date.now(), remainingTime: startedAt + time - Date.now() }))
+        dispatch(pauseTimer({ id, remainingTime: startedAt + time - Date.now() }))
     }
 
     return {
