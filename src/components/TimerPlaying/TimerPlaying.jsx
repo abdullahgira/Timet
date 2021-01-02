@@ -13,16 +13,18 @@ export default function TimerPlaying({
     time,
     startedAt,
     pausedAt,
+    remainingTime,
     doneAt,
     state,
 }) {
     const { hours, minutes, seconds, onPause } = useTimePlaying({
         id,
-        time: pausedAt || time,
+        time: remainingTime || time,
         startedAt,
         name,
         doneAt
     })
+
     return (
         <div
             className={`card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative ${
@@ -60,7 +62,7 @@ export default function TimerPlaying({
             </div>
             {state === timerState.DONE ? (
                 <div className='timer__done-at'>
-                    Done at: <span className="font-weight-bold">{doneAt}</span>
+                    Done at: <span className="font-weight-bold">{(pausedAt ? new Date(pausedAt + time) : new Date(startedAt + time)).toString().slice(0, 24)}</span>
                 </div>
             ) : (
                 null

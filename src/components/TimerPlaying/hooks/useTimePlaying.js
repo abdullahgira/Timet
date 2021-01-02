@@ -23,7 +23,7 @@ export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
         notification.sendNotification({
             title: `${name} is done!`,
         })
-        dispatch(doneTimer({ id, doneAt: startedAt === 0 ? doneAt : new Date().toString().slice(0, 24) }))
+        dispatch(doneTimer({ id }))
         dispatch(playAudio())
         setDone(true)
     }
@@ -53,7 +53,7 @@ export default function useTimePlaying({ id, time, startedAt, doneAt, name }) {
 
     function onPause() {
         clearInterval(intervalRef.current)
-        dispatch(pauseTimer({ id, pausedAt: startedAt + time - Date.now() }))
+        dispatch(pauseTimer({ id, pausedAt: Date.now(), remainingTime: startedAt + time - Date.now() }))
     }
 
     return {

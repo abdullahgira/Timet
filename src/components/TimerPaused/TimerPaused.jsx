@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux'
 import { startTimer } from '../../actions'
 import PlayIcon from '../Icons/PlayIcon'
 
-export default function TimerPaused({ id, name, time, pausedAt }) {
-    const { hours, minutes, seconds } = humanReadableTime(pausedAt || time)
+export default function TimerPaused({ id, name, time, remainingTime }) {
+    const { hours, minutes, seconds } = humanReadableTime(remainingTime || time)
     const dispatch = useDispatch()
 
     function handleResume() {

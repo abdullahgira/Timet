@@ -39,7 +39,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     className='form-control mb-2 timer__title-input text-black'
                     placeholder='Timer name'
                     value={name}
-                    onClick={(e) => e.target.select()}
+                    onFocus={(e) => e.target.select()}
                     onChange={(e) => setName(e.target.value)}
                     onKeyUp={handleKeyDown}
                     onBlur={() => handleTimerUpdate()}
@@ -51,7 +51,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='hh'
                             value={hours}
-                            onClick={(e) => e.target.select()}
+                            onFocus={(e) => e.target.select()}
                             onChange={(e) =>
                                 handleTimeInput({
                                     type: 'HOURS',
@@ -73,7 +73,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='mm'
                             value={minutes}
-                            onClick={(e) => e.target.select()}
+                            onFocus={(e) => e.target.select()}
                             onChange={(e) =>
                                 handleTimeInput({
                                     type: 'MINUTES',
@@ -95,7 +95,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                             className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
                             placeholder='ss'
                             value={seconds}
-                            onClick={(e) => e.target.select()}
+                            onFocus={(e) => e.target.select()}
                             onChange={(e) =>
                                 handleTimeInput({
                                     type: 'SECONDS',
