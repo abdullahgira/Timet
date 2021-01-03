@@ -28,7 +28,7 @@ export default function TimerPlaying({
 
     return (
         <div
-            className={`card__list bg-white box-shadow border-radius border mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative ${
+            className={`card__list bg-white box-shadow border-radius mb-2 py-4 px-3 d-flex align-itmes-center justify-content-center position-relative ${
                 state === timerState.DONE && `done`
             }`}
         >
