@@ -20,7 +20,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
     } = useTimeWaiting({ id, name, time })
 
     return (
-        <div className='card__list bg-white border-radius box-shadow border mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>
+        <div className='card__list bg-white border-radius box-shadow mb-2 py-4 px-3 d-flex align-itmes-center  justify-content-center position-relative'>
             <a
                 href='##'
                 className='text-secondary timer__delete'
@@ -36,7 +36,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
             <div className='d-flex flex-column justify-content-center timer__form'>
                 <input
                     type='text'
-                    className='form-control mb-2 timer__title-input text-black'
+                    className='form-control mb-2 timer__title-input text-black border-0 bg-light'
                     placeholder='Timer name'
                     value={name}
                     onFocus={(e) => e.target.select()}
@@ -48,7 +48,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     <span>
                         <input
                             type='number'
-                            className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
+                            className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black border-0 bg-light'
                             placeholder='hh'
                             value={hours}
                             onFocus={(e) => e.target.select()}
@@ -70,7 +70,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     <span>
                         <input
                             type='number'
-                            className='form-control mr-1 p-1 p-lg-2 text-center timer__time-input text-black'
+                            className='form-control mr-2 p-1 p-lg-2 text-center timer__time-input text-black border-0 bg-light'
                             placeholder='mm'
                             value={minutes}
                             onFocus={(e) => e.target.select()}
@@ -92,7 +92,7 @@ export default function TimerWaiting({ id, name: timerName, time }) {
                     <span>
                         <input
                             type='number'
-                            className='form-control p-1 p-lg-2 text-center timer__time-input text-black'
+                            className='form-control p-1 p-lg-2 text-center timer__time-input text-black border-0 bg-light'
                             placeholder='ss'
                             value={seconds}
                             onFocus={(e) => e.target.select()}
