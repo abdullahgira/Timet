@@ -2,10 +2,12 @@ $enable-responsive-font-sizes: true;
 
 $secondary: #aeb1b4;
 $theme-colors: (
+    'white': #fff,
     'gray-1': #363636,
     'gray-5': #e0e0e0,
     'black': #1d1d1d,
     'secondary': $secondary,
+    'success': #26c04d
 );
 
 @import '~bootstrap/scss/bootstrap';
