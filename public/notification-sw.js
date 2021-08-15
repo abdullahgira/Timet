@@ -1,4 +1,4 @@
-const urlToOpen = new URL('https://timet.netlify.app/', self.location.origin)
+const urlToOpen = new URL('https://timet.vercel.app/', self.location.origin)
     .href
 
 self.addEventListener('notificationclick', function (event) {
